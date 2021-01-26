@@ -1,0 +1,33 @@
+#include<stdio.h>
+#include<vector>
+using namespace std;
+int main(){
+//	freopen("input.txt","rt",stdin);
+	int n,i,j,tmp;
+	scanf("%d",&n);
+	vector<int> ch(n+1);
+	
+	for(i=2;i<=n;i++){ //n!이므로 1은 돌릴 필요x 
+		tmp=i;//소인수 분해를 하기 위해 i를 쪼개야 하기 때문에, i는 건들면 안되기 떄문! 
+		j=2;
+			while(1){
+			if(tmp%j==0){
+			tmp=tmp/j;
+			ch[j]++;//이때 j는 인수이므로 ! 
+}
+		else
+		j++;
+		if(tmp==1) break;
+	}
+	}
+	
+	
+	printf("%d! = ",n);
+	for(i=2;i<=n;i++){
+		if(ch[i]!=0)
+		printf("%d ",ch[i]);
+	}
+	
+	
+	return 0;
+}
