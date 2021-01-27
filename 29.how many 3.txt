@@ -1,0 +1,26 @@
+//3의 개수 구하기(small)
+#include<stdio.h>
+#include<vector>
+#include<algorithm>
+using namespace std;
+int main(){
+//	freopen("input.txt","rt",stdin);
+	
+	int i,n,j,cnt=0,tmp,res;
+	scanf("%d",&n);
+	
+	for(i=1;i<=n;i++){
+		tmp=i;//값을 변형시키지 않기 위해 
+		while(tmp>0){
+			res=tmp%10;
+			if(res==3) cnt++;
+			tmp=tmp/10;
+		}
+	}
+		
+		printf("%d",cnt);
+			
+	
+	
+	return 0;
+}
