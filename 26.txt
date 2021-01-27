@@ -1,0 +1,29 @@
+<마라톤 문제>
+
+#include<stdio.h>
+#include<vector>
+using namespace std;
+int main(){
+	//freopen("input.txt", "rt", stdin);
+	int n,i,j,num,cnt=0;//num:등수 
+	scanf("%d",&n);
+	vector<int> a(n+1);
+	//vector<int> num(n+1);
+	
+	for(i=1;i<=n;i++){
+		scanf("%d",&a[i]);
+	}
+	
+	for(i=1;i<=n;i++){
+		cnt=0;
+		for(j=1;j<i;j++){
+			if(a[i]>a[j])
+			cnt++;
+		}
+		num=i-cnt;
+		printf("%d ",num);
+	}
+	
+	
+	return 0;
+}
