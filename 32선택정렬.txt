@@ -1,0 +1,25 @@
+#include<vector>
+#include<algorithm>
+#include<stdio.h>
+int main(){
+	freopen("input.txt", "rt", stdin);
+	int n,i,j,tmp,idx;
+	int a[100]={};
+	scanf("%d",&n);
+	
+	for(i=0;i<n;i++){
+		scanf("%d",&a[i]);
+	}
+	
+	for(i=0;i<n-1;i++){
+		idx=i;
+		for(j=i+1;j<n;j++){
+			if(a[j]<a[idx]){//최솟값을 찾는 과정 
+				idx=j;
+			}
+			tmp=a[idx];
+			a[idx]=a[i];
+			a[i]=tmp;
+		}
+	}
+			
