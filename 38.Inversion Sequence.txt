@@ -1,0 +1,36 @@
+//inversion sequence
+#include<vector>
+#include<algorithm>
+#include<stdio.h>
+using namespace std;
+int is[101];
+int os[101];
+int main(){
+	freopen("input.txt","rt",stdin);
+	int i,j,n,pos;
+	vector<int> is(n+1);
+	vector<int> os(n+1);
+	
+	scanf("%d",&n);
+	for(i=1;i<=n;i++){
+		scanf("%d",&is[i]);
+	}
+	
+	for(i=n;i>=1;i--){
+		pos=i;//i는 건들면 안된다(for문을 돌아야하니..) 
+		for(j=1;j<=is[i];j++){//몇바퀴 도는지 
+			os[pos]=os[pos+1];
+			pos++;
+		}
+		os[pos]=i;
+	}
+	
+	for(i=1;i<=n;i++){
+		printf("%d ",os[i]);
+	}
+	
+		
+			
+	return 0;
+}
+
