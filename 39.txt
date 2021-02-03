@@ -1,0 +1,44 @@
+#include<vector>
+#include<algorithm>
+#include<stdio.h>
+using namespace std;
+int a[101];
+int b[101];
+int c[202];
+int main(){
+	freopen("input.txt","rt",stdin);
+ 	int n1,n2,i,p1=1,p2=1,p3=1;
+ 	
+ 	
+ 	scanf("%d",&n1);
+ 	for(i=1;i<=n1;i++){
+ 		scanf("%d",&a[i]);
+ 	}
+ 	
+ 	scanf("%d",&n2);
+ 	for(i=1;i<=n2;i++){
+ 		scanf("%d",&b[i]);
+ 	}
+ 	
+ 	while(p1<=n1&&p2<=n2){//둘중 하나라도 끝까지 가면 while문 끝남 
+ 		
+ 			if(a[p1]<b[p2]){
+ 				c[p3++]=a[p1++];
+ 			}
+ 			else{
+ 				c[p3++]=b[p2++];
+ 			}
+ 			
+ 		}
+ 		
+ 	while(p1<=n1) c[p3++]=a[p1++];
+	while(p2<=n2) c[p3++]=b[p2++]; 
+ 	
+ 	for(i=1;i<p3;i++){
+ 		printf("%d ",c[i]);
+ 	}
+ 		
+	return 0;
+}
+
+
