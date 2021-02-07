@@ -1,0 +1,43 @@
+#include<vector>
+#include<algorithm>
+#include<stdio.h>
+using namespace std;
+int a[1001], n;
+int Count(int s){
+	int i,cnt=1,sum=0;
+	for(i=1;i<=n;i++){
+		if(sum+a[i]>s){
+			cnt++;
+			sum=a[i];
+		}
+		else
+		sum+=a[i];
+	}
+	return cnt;
+}
+
+	
+//이분 검색 (결정 알고리즘) 
+int main(){ 
+	freopen("input.txt","rt",stdin);
+	int m,i,rt=0,mid,lt=1,res;
+	
+	scanf("%d %d",&n,&m);//9 3
+	for(i=1;i<=n;i++){
+		scanf("%d",&a[i]);
+		rt=rt+a[i];
+	}
+	while(lt<=rt){
+		mid=(lt+rt)/2;
+		if(Count(mid)<=m){
+			res=mid;//더 좋은 답(더 최소 용량)이 발견되면 갱신 
+			rt=mid-1;
+		}
+		else lt=mid+1;
+	}
+		
+	printf("%d\n",res);	
+			
+	return 0;
+}
+
