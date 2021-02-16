@@ -1,0 +1,31 @@
+#include<vector>
+#include<algorithm>
+#include<stdio.h>
+using namespace std;
+
+int main(){ 
+//삽입 정렬
+//j의 한 턴마다 j가 돌면서 그 턴의 tmp값과 비교하여 더 크면
+//뒤로 한칸 씩 미룬 후에 남겨진 한 자리에 삽입하는 방식
+
+int a[100],n,tmp,i,j;
+scanf("%d",&n);
+for(i=0;i<n;i++){
+scanf("%d",&a[i]);
+}
+
+for(i=1;i<n;i++){//삽입 정렬의 경우 맨 앞의 것은 건들지 않아도 된다.
+tmp=a[i];
+//먼저 일시적으로 tmp에 a[i]값을 넣는다.
+for(j=i-1;j>0;j--){//뒤로 밀거기 떄문에 --
+if(a[j]>tmp) a[j+1]=a[j];//뒤로 밀어줌
+else break;
+}
+}
+
+a[j+1]=tmp;
+for(i=0;i<n;i++){
+	printf("%d ",a[i]);
+}
+return 0;
+}
