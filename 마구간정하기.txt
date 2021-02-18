@@ -1,0 +1,50 @@
+#include<vector>
+#include<algorithm>
+#include<stdio.h>
+using namespace std;
+/* 풀이: 가장 인접한 두 말의 거리를
+정해놓고 나머지 거리는 그거보다 길게?
+답을 정해놓고 그것을 찾아가는 방식 -> 이분 검색
+가장 가까운 두 말의 거리를 이분검색을 통해 구하기*/ 
+int n;
+int Count(int len,int x[]){
+	int i,cnt=1,pos=x[1];
+	for(i=2;i<=n;i++){
+		if(x[i]-pos>=len){
+			cnt++;
+			pos=x[i];
+		}
+	}
+	return cnt;
+}
+int main(){ 
+	
+	freopen("input.txt","rt",stdin);
+	int m,i,lt=1,rt,mid,res;
+	 
+	scanf("%d %d",&n,&m);
+	int *x=new int[n+1];//동적으로 1차원 배열 x을 정함 
+	for(i=1;i<=n;i++){
+	scanf("%d",&x[i]);
+}
+
+	sort(x+1,x+n+1);//동적으로 배열했을때 sort 방식 
+	//for(i=0;i<n;i++){
+	//	printf("%d\n",a[i]);
+	//}
+	
+	rt=x[n];//rt는 x의 맨 오른쪽 값
+	while(lt<=rt){
+		mid=(lt+rt)/2;
+		if(Count(mid,x)>=m){
+			res=mid;
+			lt=mid+1;
+		}
+		else rt=mid-1;
+	}
+	printf("%d\n",res);
+
+	delete[] x;
+
+	return 0;
+}
