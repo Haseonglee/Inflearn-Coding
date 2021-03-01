@@ -1,0 +1,69 @@
+#include<vector>
+#include<algorithm>
+#include<stdio.h>
+using namespace std;
+int a[10][10];
+int main(){ 
+	
+	freopen("input.txt","rt",stdin);
+	int i,j,avg,sum,min,res,tmp;
+	//int min_res;//res는 차의 값 
+	
+	for(i=1;i<=9;i++){
+		sum=0;
+		for(j=1;j<=9;j++){
+			scanf("%d",&a[i][j]);
+			sum=sum+a[i][j];
+		}
+		avg=(sum/9.0)+0.5;//실수 / 정수 =  실수 
+		printf("%d ",avg);
+		min=2147000000;
+		for(j=1;j<=9;j++){
+			tmp=abs(a[i][j]-avg);
+			if(tmp<min){
+				min=tmp;
+				res=a[i][j];
+				
+		}
+		else if(tmp==min){
+			if(a[i][j]>res) res=a[i][j];
+		}
+		
+	}
+	printf("%d\n", res);
+}
+	
+	
+/* 나의 코드
+		for(i=1;i<=9;i++){
+		sum=0;
+		avg=0;
+		min_res=2147000000;
+		for(j=1;j<=9;j++){
+			sum=sum+a[i][j];
+		}
+		avg=sum/9;
+		for(i=1;i<=9;i++){
+			for(j=1;j<=9;j++){
+				if(a[i][j]>avg){
+					if(a[i][j]-avg<min_res){
+						min_res=a[i][j];
+					}
+				}
+				else{
+					if((a[i][j]-avg)*(-1)<min_res){
+						min_res=a[i][j];
+					}
+				}
+			}
+		}
+		
+		printf("%d %d\n", avg,min_res);
+	}
+	
+			*/
+			
+	
+	
+	return 0;
+}
